@@ -15,7 +15,7 @@ Route::get('/', 'HomePageController@index');
 Route::get('/listing', 'ListingPageController@index');
 Route::get('/details', 'DetailsPageController@index');
 
-Route::group(['prefix'=>'back', 'namespace'=>'Admin'], function () {
+Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
 
