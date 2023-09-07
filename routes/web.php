@@ -24,3 +24,7 @@ Route::group(['prefix'=>'back', 'namespace'=>'Admin'], function () {
     Route::get('/category/edit', 'CategoryController@edit');
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
