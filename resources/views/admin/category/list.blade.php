@@ -14,9 +14,8 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Table</a></li>
-                    <li class="active">Data table</li>
+                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li class="active">Categories</li>
                 </ol>
             </div>
         </div>

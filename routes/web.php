@@ -16,9 +16,11 @@ Route::get('/listing', 'ListingPageController@index');
 Route::get('/details', 'DetailsPageController@index');
 
 Route::group(['prefix'=>'back', 'namespace'=>'Admin'], function () {
-    Route::get('/', 'DashboardController@index');
+    Route::get('/', 'DashboardController@index')->name('dashboard');
 
 
-    Route::get('/category', 'CategoryController@index');
+    Route::get('/category', 'CategoryController@index')->name('admin.categories');
+    Route::get('/category/create', 'CategoryController@create');
+    Route::get('/category/edit', 'CategoryController@edit');
 
 });
