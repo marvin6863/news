@@ -37,7 +37,7 @@
         <div class="container">
             <div class="login-content">
                 <div class="login-logo">
-                    <a href="index.html">
+                    <a href="/">
                         <h3>{{ __('Tech News') }}</h3>
                     </a>
                 </div>
