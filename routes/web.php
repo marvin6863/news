@@ -14,3 +14,11 @@
 Route::get('/', 'HomePageController@index');
 Route::get('/listing', 'ListingPageController@index');
 Route::get('/details', 'DetailsPageController@index');
+
+Route::group(['prefix'=>'back', 'namespace'=>'Admin'], function () {
+    Route::get('/', 'DashboardController@index');
+
+
+    Route::get('/category', 'CategoryController@index');
+
+});
