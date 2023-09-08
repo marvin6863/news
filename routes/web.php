@@ -23,6 +23,9 @@ Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], fun
     Route::get('/category/create', 'CategoryController@create');
     Route::get('/category/edit', 'CategoryController@edit');
 
+    Route::get('/permission/create  ', 'PermissionController@create')->name('permission.create');
+    Route::post('/permission/store  ', 'PermissionController@store');
+
 });
 
 Auth::routes();
