@@ -23,8 +23,12 @@ Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], fun
     Route::get('/category/create', 'CategoryController@create');
     Route::get('/category/edit', 'CategoryController@edit');
 
-    Route::get('/permission/create  ', 'PermissionController@create')->name('permission.create');
+    Route::get('/permission', 'PermissionController@index')->name('admin.permissions');
+    Route::get('/permission/create', 'PermissionController@create')->name('permission.create');
     Route::post('/permission/store  ', 'PermissionController@store');
+    Route::get('/permission/edit/{id}', 'PermissionController@edit')->name('permission.edit');
+    Route::put('/permission/update/{id}', 'PermissionController@update')->name('permission.update');
+    Route::delete('/permission/delete/{id}', 'PermissionController@destroy')->name('permission.delete');
 
 });
 

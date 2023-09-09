@@ -15,7 +15,11 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        $page_name = 'Permissions';
+
+        $data = Permission::all();
+
+        return view('admin.permission.list', compact('data', 'page_name'));
     }
 
     /**
@@ -54,8 +58,9 @@ class PermissionController extends Controller
 
         $permission->save();
 
-        return redirect('/back/permission/create')->with('success', 'Permission Created Successfully...');
-
+        return redirect()
+            ->route('admin.permissions')
+            ->with('success', 'Permission Created Successfully...');
     }
 
     /**
@@ -77,7 +82,9 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page_name = 'Edit Permission';
+        $permission = Permission::findOrFail($id);
+        return view('admin.permission.edit', compact('permission', 'page_name'));
     }
 
     /**
@@ -89,7 +96,26 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'name' => 'required',
+            ],
+            [
+                'name.required' => 'Name Field is Required*',
+            ],
+        );
+
+        $permission = Permission::findOrFail($id);
+        $permission->name = $request->name;
+        $permission->display_name = $request->display_name;
+        $permission->description = $request->description;
+
+        $permission->save();
+
+        return redirect()
+            ->route('admin.permissions')
+            ->with('success', 'Permission Updated Successfully...');
     }
 
     /**
@@ -100,6 +126,11 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        $permission->delete();
+
+        return redirect()
+            ->route('admin.permissions')
+            ->with('success', 'Permission Deleted Successfully...');
     }
 }

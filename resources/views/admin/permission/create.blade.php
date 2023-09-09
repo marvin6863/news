@@ -14,7 +14,7 @@
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ route('admin.categories') }}">Permissions</a></li>
+                        <li><a href="{{ route('admin.permissions') }}">Permissions</a></li>
                         <li class="active">Create</li>
                     </ol>
                 </div>
@@ -36,17 +36,9 @@
                             <!-- Credit Card -->
                             <div id="pay-invoice">
                                 <div class="card-body">
-                                    @if (session('success'))
-                                    <div class="col-sm-12">
-                                        <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                                            <span class="badge badge-pill badge-success">Success</span> {{session('success')}}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    @endif
+
                                     <hr>
+
                                     {!! Form::open(['url' => 'back/permission/store', 'method' => 'post']) !!}
 
                                     <div class="form-group">
@@ -91,7 +83,6 @@
                 </div><!--/.col-->
 
             </div>
-
 
         </div><!-- .animated -->
     </div><!-- .content -->
