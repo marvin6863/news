@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
-@section('content')
 
+@section('content')
     <script>
         jQuery(document).ready(function() {
             jQuery(".myselect").chosen({
@@ -11,77 +11,85 @@
         });
     </script>
 
-    <div class="row">
-        <div class="col-md-12">
-
-
-            <div class="card">
-                <div class="card-header">
-                    <strong class="card-title">{{ $page_name }} </strong>
+    <div class="breadcrumbs">
+        <div class="col-sm-4">
+            <div class="page-header float-left">
+                <div class="page-title">
+                    <h1>Dashboard</h1>
                 </div>
-                <div class="card-body">
-                    <!-- Credit Card -->
-                    <div id="pay-invoice">
-                        <div class="card-body">
-                            @if (count($errors) > 0)
-                                <div class="alert alert-danger" role="alert">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li> {{ $error }} </li>
-                                        @endforeach
-
-                                    </ul>
-
-                                </div>
-                            @endif
-
-
-                            <hr>
-
-                            {{ Form::open(['url' => 'back/roles/store', 'method' => 'post']) }}
-
-
-                            <div class="form-group">
-                                {{ Form::label('name', 'Name', ['class' => 'control-label mb-1']) }}
-
-                                {{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
-                            </div>
-
-                            <div class="form-group">
-                                {{ Form::label('display_name', 'Display Name', ['class' => 'control-label mb-1']) }}
-
-                                {{ Form::text('display_name', null, ['class' => 'form-control', 'id' => 'display_name']) }}
-                            </div>
-
-                            <div class="form-group">
-                                {{ Form::label('description', 'Description', ['class' => 'control-label mb-1']) }}
-
-                                {{ Form::textarea('description', null, ['class' => 'form-control', 'id' => 'description']) }}
-                            </div>
-
-                            <div class="form-group">
-                                {{ Form::label('permission', 'Permission', ['class' => 'control-label mb-1']) }}
-
-                                {{ Form::select('permissions[]', $permissions, null, ['class' => 'form-control myselect', 'data-placeholder' => 'Select Permissions', 'multiple']) }}
-                            </div>
-
-                            <div>
-                                <button id="payment-button" type="submit" class="btn btn-lg btn-success btn-block">
-                                    <i class="fa fa-save fa-lg"></i>&nbsp;
-                                    <span id="payment-button-amount">Submit</span>
-                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
-                                </button>
-                            </div>
-                            {{ Form::close() }}
-                        </div>
-                    </div>
-
-                </div>
-            </div> <!-- .card -->
-
-
+            </div>
         </div>
-
+        <div class="col-sm-8">
+            <div class="page-header float-right">
+                <div class="page-title">
+                    <ol class="breadcrumb text-right">
+                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ route('admin.roles') }}">Roles</a></li>
+                        <li class="active">Create</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">{{ $page_name }} </strong>
+                        </div>
+                        <div class="card-body">
+                            <!-- Credit Card -->
+                            <div id="pay-invoice">
+                                <div class="card-body">
+                                    <hr>
+
+                                    {{ Form::open(['url' => 'back/roles/store', 'method' => 'post']) }}
+
+
+                                    <div class="form-group">
+                                        {{ Form::label('name', 'Name', ['class' => 'control-label mb-1']) }}
+
+                                        {{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ Form::label('display_name', 'Display Name', ['class' => 'control-label mb-1']) }}
+
+                                        {{ Form::text('display_name', null, ['class' => 'form-control', 'id' => 'display_name']) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ Form::label('description', 'Description', ['class' => 'control-label mb-1']) }}
+
+                                        {{ Form::textarea('description', null, ['class' => 'form-control', 'id' => 'description']) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ Form::label('permission', 'Permission', ['class' => 'control-label mb-1']) }}
+
+                                        {{ Form::select('permissions[]', $permissions, null, ['class' => 'form-control myselect', 'data-placeholder' => 'Select Permissions', 'multiple']) }}
+                                    </div>
+
+                                    <div>
+                                        <button id="payment-button" type="submit" class="btn btn-lg btn-success btn-block">
+                                            <i class="fa fa-save fa-lg"></i>&nbsp;
+                                            <span id="payment-button-amount">Save</span>
+                                            <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                        </button>
+                                    </div>
+                                    {{ Form::close() }}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> <!-- .card -->
+
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

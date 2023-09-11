@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Role;
 use App\Permission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
@@ -16,7 +18,8 @@ class RoleController extends Controller
     public function index()
     {
         $page_name = 'Roles';
-        return view('admin.role.list', compact('page_name'));
+        $data = Role::all();
+        return view('admin.role.list', compact('page_name', 'data'));
     }
 
     /**
@@ -27,7 +30,7 @@ class RoleController extends Controller
     public function create()
     {
         $page_name = 'Create Role';
-        $permissions = Permission::pluck('id', 'name');
+        $permissions = Permission::pluck('name', 'id');
         return view('admin.role.create', compact('page_name', 'permissions'));
     }
 
@@ -39,7 +42,32 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'name' => 'required',
+                'permissions' => 'required|array',
+                'permissions.*' => 'required|string',
+            ],
+            [
+                'name.required' => 'Name field is required',
+                'permissions.required' => 'You must select Permissions',
+                'permissions.*.required' => 'You must Select a permission',
+            ],
+        );
+
+        $role = new Role();
+        $role->name = $request->name;
+        $role->display_name = $request->display_name;
+        $role->description = $request->description;
+        $role->save();
+        foreach ($request->permissions as $value) {
+            $role->attachPermission($value);
+        }
+
+        return redirect()
+            ->action('Admin\RoleController@index')
+            ->with('success', 'Role Created Successfully');
     }
 
     /**
@@ -61,7 +89,14 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page_name = 'Edit Role';
+        $role = Role::findOrFail($id);
+        $permission = Permission::pluck('name', 'id');
+        $selectedPermission = DB::table('permission_role')
+            ->where('permission_role.role_id', $id)
+            ->pluck('permission_id')
+            ->toArray();
+        return view('admin.role.edit', compact('page_name', 'permission', 'selectedPermission', 'role'));
     }
 
     /**
@@ -73,7 +108,35 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'name' => 'required',
+                'permissions' => 'required|array',
+                'permissions.*' => 'required',
+            ],
+            [
+                'name.required' => 'Name field is required',
+                'permissions.required' => 'You must select Permissions',
+                'permissions.*.required' => 'You must Select a permission',
+            ],
+        );
+
+        $role = Role::find($id);
+        $role->name = $request->name;
+        $role->display_name = $request->display_name;
+        $role->description = $request->description;
+        $role->save();
+        DB::table('permission_role')
+            ->where('role_id', $id)
+            ->delete();
+        foreach ($request->permissions as $value) {
+            $role->attachPermission($value);
+        }
+
+        return redirect()
+            ->action('Admin\RoleController@index')
+            ->with('success', 'Role Updated Successfully');
     }
 
     /**
@@ -84,6 +147,9 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Role::where('id', $id)->delete();
+        return redirect()
+            ->action('Admin\RoleController@index')
+            ->with('success', 'Role Delete Successfully');
     }
 }

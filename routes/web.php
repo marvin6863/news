@@ -32,6 +32,10 @@ Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], fun
 
     Route::get('/roles', 'RoleController@index')->name('admin.roles');
     Route::get('/roles/create', 'RoleController@create')->name('roles.create');
+    Route::post('/roles/store', 'RoleController@store');
+    Route::get('/roles/edit/{id}', 'RoleController@edit')->name('roles.edit');
+    Route::put('/roles/edit/{id}', ['uses'=>'RoleController@update','as'=>'roles.update'] );
+    Route::delete('/roles/delete/{id}', 'RoleController@destroy')->name('roles.delete');
 });
 
 Auth::routes();
