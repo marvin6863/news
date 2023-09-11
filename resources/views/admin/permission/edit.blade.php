@@ -67,7 +67,7 @@
 
 
                                     <div>
-                                        <button id="payment-button" type="submit" class="btn btn-lg btn-success btn-block">
+                                        <button id="payment-button" type="submit" class="btn btn-lg btn-warning btn-block">
                                             <i class="fa fa-save fa-lg"></i>&nbsp;
                                             <span id="payment-button-amount">Submit</span>
                                         </button>

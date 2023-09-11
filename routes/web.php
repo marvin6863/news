@@ -30,6 +30,8 @@ Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], fun
     Route::put('/permission/update/{id}', 'PermissionController@update')->name('permission.update');
     Route::delete('/permission/delete/{id}', 'PermissionController@destroy')->name('permission.delete');
 
+    Route::get('/roles', 'RoleController@index')->name('admin.roles');
+    Route::get('/roles/create', 'RoleController@create')->name('roles.create');
 });
 
 Auth::routes();
