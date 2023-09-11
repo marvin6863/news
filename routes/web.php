@@ -36,6 +36,13 @@ Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], fun
     Route::get('/roles/edit/{id}', 'RoleController@edit')->name('roles.edit');
     Route::put('/roles/edit/{id}', ['uses'=>'RoleController@update','as'=>'roles.update'] );
     Route::delete('/roles/delete/{id}', 'RoleController@destroy')->name('roles.delete');
+
+    Route::get('/authors', 'AuthorController@index')->name('admin.authors');
+    Route::get('/authors/create', 'AuthorController@create')->name('authors.create');
+    Route::post('/authors/store', 'AuthorController@store');
+    Route::get('/authors/edit/{id}', 'AuthorController@edit')->name('authors.edit');
+    Route::put('/authors/edit/{id}', ['uses'=>'AuthorController@update','as'=>'authors.update'] );
+    Route::delete('/authors/delete/{id}', 'AuthorController@destroy')->name('authors.delete');
 });
 
 Auth::routes();

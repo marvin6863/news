@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
-
 @section('content')
+
     <script>
         jQuery(document).ready(function() {
             jQuery(".myselect").chosen({
@@ -24,7 +24,7 @@
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ route('admin.roles') }}">Roles</a></li>
+                        <li><a href="{{ route('admin.authors') }}">Authors</a></li>
                         <li class="active">Create</li>
                     </ol>
                 </div>
@@ -45,15 +45,16 @@
                             <!-- Credit Card -->
                             <div id="pay-invoice">
                                 <div class="card-body">
+
                                     <hr>
 
-                                    {{ Form::open(['url' => 'back/roles/store', 'method' => 'post']) }}
+                                    {{ Form::open(['url' => 'back/authors/store', 'method' => 'post']) }}
 
 
                                     <div class="form-group">
                                         {{ Form::label('name', 'Name', ['class' => 'control-label mb-1']) }}
 
-                                        {{ Form::text('name', null, ['class' => 'form-control '.($errors->has('name') ? 'is-invalid' : ''), 'id' => 'name']) }}
+                                        {{ Form::text('name', null, ['class' => 'form-control '. ($errors->has('name') ? 'is-invalid' : ''), 'id' => 'name',  'autofocus' => 'autofocus']) }}
 
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -63,21 +64,34 @@
                                     </div>
 
                                     <div class="form-group">
-                                        {{ Form::label('display_name', 'Display Name', ['class' => 'control-label mb-1']) }}
+                                        {{ Form::label('email', 'Email', ['class' => 'control-label mb-1']) }}
 
-                                        {{ Form::text('display_name', null, ['class' => 'form-control', 'id' => 'display_name']) }}
+                                        {{ Form::email('email', null, ['class' => 'form-control '. ($errors->has('email') ? 'is-invalid' : ''), 'id' => 'email']) }}
+
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
-                                        {{ Form::label('description', 'Description', ['class' => 'control-label mb-1']) }}
+                                        {{ Form::label('password', 'Password', ['class' => 'control-label mb-1']) }}
 
-                                        {{ Form::textarea('description', null, ['class' => 'form-control', 'id' => 'description']) }}
+                                        {{ Form::password('password', ['class' => 'form-control '. ($errors->has('password') ? 'is-invalid' : ''), 'id' => 'password']) }}
+
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
-                                        {{ Form::label('permission', 'Permission', ['class' => 'control-label mb-1']) }}
+                                        {{ Form::label('roles', 'Roles', ['class' => 'control-label mb-1']) }}
 
-                                        {{ Form::select('permissions[]', $permissions, null, ['class' => 'form-control myselect', 'data-placeholder' => 'Select Permissions', 'multiple']) }}
+                                        {{ Form::select('roles[]', $roles, null, ['class' => 'form-control myselect', 'data-placeholder' => 'Select Roles', 'multiple']) }}
+                                        
                                     </div>
 
                                     <div>
@@ -94,8 +108,11 @@
                         </div>
                     </div> <!-- .card -->
 
+
                 </div>
+
             </div>
         </div>
     </div>
+
 @endsection

@@ -50,8 +50,8 @@ class RoleController extends Controller
                 'permissions.*' => 'required|string',
             ],
             [
-                'name.required' => 'Name field is required',
-                'permissions.required' => 'You must select Permissions',
+                'name.required' => 'Name field is required*',
+                'permission.required' => 'You must select Permissions',
                 'permissions.*.required' => 'You must Select a permission',
             ],
         );
@@ -150,6 +150,6 @@ class RoleController extends Controller
         Role::where('id', $id)->delete();
         return redirect()
             ->action('Admin\RoleController@index')
-            ->with('success', 'Role Delete Successfully');
+            ->with('success', 'Role Deleted Successfully');
     }
 }
