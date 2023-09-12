@@ -4,12 +4,9 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="left_section">
-                        <span class="date">
-                            Sunday .
-                        </span>
                         <!-- Date -->
                         <span class="time">
-                            09 August . 2023
+                            {{  Carbon\Carbon::now()->toDateTimeString() }}
                         </span>
                         <!-- Time -->
                         <div class="social">

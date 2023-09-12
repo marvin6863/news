@@ -15,45 +15,32 @@
                     <a href="{{ route('dashboard') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
 
-                <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
-
+                @permission(['Permission Update','All'])
                 <li class="{{ (request()->is('back/permission')) ? 'active' : '' }}">
                     <a href="{{ route('admin.permissions') }}"> <i class="menu-icon fa fa-lock"></i>Permissions</a>
                 </li>
+                @endpermission
 
+                @permission(['Role Update','All'])
                 <li class="{{ (request()->is('back/roles')) ? 'active' : '' }}">
                     <a href="{{ route('admin.roles') }}"> <i class="menu-icon fa fa-tasks"></i>Roles </a>
                 </li>
+                @endpermission
 
+                @permission(['Author Update','All'])
                 <li class="{{ (request()->is('back/authors')) ? 'active' : '' }}">
                     <a href="{{ route('admin.authors') }}"> <i class="menu-icon fa fa-users"></i>Authors </a>
                 </li>
+                @endpermission
 
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-line-chart"></i><a href="charts-chartjs.html">Chart JS</a></li>
-                        <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
-                        <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
-                    </ul>
-                </li>
+                <h3 class="menu-title">Blog</h3><!-- /.menu-title -->
 
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
-                        <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
-                    </ul>
+                @permission(['Category List','All'])
+                <li class="{{ (request()->is('back/categories')) ? 'active' : '' }}">
+                    <a href="{{ route('admin.categories') }}"> <i class="menu-icon fa fa-list-alt"></i>Categories </a>
                 </li>
-                <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
-                        <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
-                    </ul>
-                </li>
+                @endpermission
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
