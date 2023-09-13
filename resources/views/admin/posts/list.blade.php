@@ -98,7 +98,7 @@
 
                                             <td>
                                                 @permission(['Post Add', 'All', 'Post Update'])
-                                                    <a href="{{ route('posts.edit', $row->id) }}"
+                                                    <a href="{{ route('comments.list', $row->id) }}"
                                                         class="btn btn-primary btn-sm rounded" title="Comment">
                                                         <i class="fa fa-comment"></i>
                                                     </a> |

@@ -56,6 +56,13 @@ Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], fun
     Route::put('/posts/hot/news/{id}', 'PostController@hot_news');
     Route::delete('/posts/delete/{id}', 'PostController@destroy')->name('posts.delete');
 
+    Route::get('/comment/{id}', 'CommentController@index')->name('comments.list');
+    Route::get('/comment/reply/{id}', 'CommentController@reply');
+    Route::post('/comment/reply', 'CommentController@store');
+    Route::put('/comment/status/{id}', 'CommentController@status')->name('comment.status');
+
+
+
 
 });
 
