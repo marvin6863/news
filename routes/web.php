@@ -43,9 +43,19 @@ Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], fun
     Route::get('/category/create', 'CategoryController@create')->middleware('permission:Category Add|All')->name('categories.create');
     Route::post('/category/store', 'CategoryController@store')->middleware('permission:Category Add|All');
     Route::get('/category/edit/{id}', 'CategoryController@edit')->name('categories.edit');
-    Route::put('/category/edit/{id}', 'CategoryController@update')->name('categories.update');
-    Route::delete('/category/delete/{id}', 'CategoryController@destroy')->name('categories.delete');
+    Route::put('/category/update/{id}', 'CategoryController@update')->name('categories.update');
     Route::put('/category/status/{id}', 'CategoryController@status');
+    Route::delete('/category/delete/{id}', 'CategoryController@destroy')->name('categories.delete');
+
+    Route::get('/posts', 'PostController@index')->middleware('permission:Post List|All')->name('admin.posts');
+    Route::get('/posts/create', 'PostController@create')->middleware('permission:Post Add|All')->name('posts.create');
+    Route::post('/posts/store', 'PostController@store')->middleware('permission:Post Add|All');
+    Route::get('/posts/edit/{id}', 'PostController@edit')->name('posts.edit');
+    Route::put('/posts/update/{id}', 'PostController@update')->name('posts.update');
+    Route::put('/posts/status/{id}', 'PostController@status')->name('posts.status');
+    Route::put('/posts/hot/news/{id}', 'PostController@hot_news');
+    Route::delete('/posts/delete/{id}', 'PostController@destroy')->name('posts.delete');
+
 
 });
 
