@@ -51,7 +51,7 @@
 
                                      <div>
                                          <button id="payment-button" type="submit"
-                                             class="btn btn-lg btn-success btn-block">
+                                             class="btn btn-lg btn-success rounded btn-block">
                                              <i class="fa fa-save fa-lg"></i>&nbsp;
                                              <span id="payment-button-amount">Save</span>
                                          </button>
