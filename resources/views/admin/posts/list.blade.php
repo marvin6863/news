@@ -69,7 +69,7 @@
                                                         class="img img-responsive w-50 mx-auto d-block">
                                                 @endif
                                             </td>
-                                            <td style="width: 10%">{{ $row->title }}</td>
+                                            <td style="width: 15%">{{ $row->title }}</td>
                                             <td style="width: 5%"> {{ $row->creator->name }} </td>
 
                                             <td style="width: 5%">{{ $row->view_count }}</td>

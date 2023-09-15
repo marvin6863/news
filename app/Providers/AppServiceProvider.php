@@ -50,7 +50,7 @@ class AppServiceProvider extends ServiceProvider
         $most_viewed = Post::with(['creator', 'comments'])
             ->where('status', 1)
             ->orderBy('view_count', 'DESC')
-            ->limit(5)
+            ->limit(4)
             ->get();
 
         $most_commented = Post::withCount('comments')
