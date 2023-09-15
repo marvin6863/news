@@ -15,20 +15,23 @@
                         <div class="feature_article_inner">
                             <div class="tag_lg red"><a href="category.html">Hot News</a></div>
                             <div class="feature_article_title">
-                                <h1><a href="single.html" target="_self">{{ $hot_news->title}} </a></h1>
+                                <h1><a href="single.html" target="_self">{{ $hot_news->title }} </a></h1>
                             </div>
                             <!-- feature_article_title -->
 
-                            <div class="feature_article_date"><a href="#" target="_self">{{ $hot_news->creator->name}}</a>,<a href="#" target="_self">{{ date('j F -Y', strtotime($hot_news->created_at)) }}</a></div>
+                            <div class="feature_article_date"><a href="#"
+                                    target="_self">{{ $hot_news->creator->name }}</a>,<a href="#"
+                                    target="_self">{{ date('j F -Y', strtotime($hot_news->created_at)) }}</a></div>
                             <!-- feature_article_date -->
 
                             <div class="feature_article_content">
-                                {{ $hot_news->short_description}}
+                                {{ $hot_news->short_description }}
                             </div>
                             <!-- feature_article_content -->
 
                             <div class="article_social">
-                                <span><i class="fa fa-comments-o"></i><a href="#">{{ $hot_news->comments_count }}</a>Comments</span>
+                                <span><i class="fa fa-comments-o"></i><a
+                                        href="#">{{ $hot_news->comments_count }}</a>{{ str_plural('Comment', $hot_news->comments_count) }}</span>
                             </div>
                             <!-- article_social -->
 
@@ -41,87 +44,47 @@
                 </div>
                 <!-- col-md-7 -->
 
-                <div class="col-md-5">
-                    <div class="feature_static_wrapper">
-                        <div class="feature_article_img">
-                            <img class="img-responsive" src="{{ asset('front/assets/img/feature-static1.jpg') }}"
-                                alt="feature-top">
+                @foreach ($top_views as $post)
+                    <div class="col-md-5" style="margin-bottom: 3%;">
+                        <div class="feature_static_wrapper">
+                            <div class="feature_article_img">
+                                <img style="height: 267px;" width="450" class="img-responsive" src="{{ asset('post') }}/{{ $post->main_image }}"
+                                    alt="{{ $post->title }}">
+                            </div>
+                            <!-- feature_article_img -->
+
+                            <div class="feature_article_inner">
+                                <div class="tag_lg purple"><a href="category.html">Top Viewed</a></div>
+                                <div class="feature_article_title">
+                                    <h1><a href="single.html" target="_self">{{ $post->title }}</a></h1>
+                                </div>
+                                <!-- feature_article_title -->
+
+                                <div class="feature_article_date"><a href="#"
+                                        target="_self">{{ $post->creator->name }}</a>,<a href="#"
+                                        target="_self">{{ date('j F -Y', strtotime($post->created_at)) }}</a></div>
+                                <!-- feature_article_date -->
+
+                                <div class="feature_article_content">
+                                    {{ str_limit($post->short_description, 50) }} </div>
+                                <!-- feature_article_content -->
+
+                                <div class="article_social">
+                                    <span><i class="fa fa-comments-o"></i><a
+                                            href="#">{{ $post->comments_count }}</a>{{ str_plural('Comment', $post->comments_count) }}</span>
+                                </div>
+                                <!-- article_social -->
+
+                            </div>
+                            <!-- feature_article_inner -->
+
                         </div>
-                        <!-- feature_article_img -->
-
-                        <div class="feature_article_inner">
-                            <div class="tag_lg purple"><a href="category.html">Top Viewed</a></div>
-                            <div class="feature_article_title">
-                                <h1><a href="single.html" target="_self">Alcatel's $180 Idol 3 4.7 is a
-                                    </a></h1>
-                            </div>
-                            <!-- feature_article_title -->
-
-                            <div class="feature_article_date"><a href="#" target="_self">Stive
-                                    Clark</a>,<a href="#" target="_self">Aug
-                                    4, 2015</a></div>
-                            <!-- feature_article_date -->
-
-                            <div class="feature_article_content">
-                                In a move to address mounting concerns about security on Android...
-                            </div>
-                            <!-- feature_article_content -->
-
-                            <div class="article_social">
-                                <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
-                                <span><i class="fa fa-comments-o"></i><a href="#">4</a>Comments</span>
-                            </div>
-                            <!-- article_social -->
-
-                        </div>
-                        <!-- feature_article_inner -->
+                        <!-- feature_static_wrapper -->
 
                     </div>
-                    <!-- feature_static_wrapper -->
+                    <!-- col-md-5 -->
+                @endforeach
 
-                </div>
-                <!-- col-md-5 -->
-
-                <div class="col-md-5">
-                    <div class="feature_static_last_wrapper">
-                        <div class="feature_article_img">
-                            <img class="img-responsive" src="{{ asset('front/assets/img/feature-static2.jpg') }}"
-                                alt="feature-top">
-                        </div>
-                        <!-- feature_article_img -->
-
-                        <div class="feature_article_inner">
-                            <div class="tag_lg blue"><a href="category.html">Top Viewed</a></div>
-
-                            <div class="feature_article_title">
-                                <h1><a href="single.html" target="_self">Gadget user good news</a></h1>
-                            </div>
-                            <!-- feature_article_title -->
-
-                            <div class="feature_article_date"><a href="#" target="_self">Stive
-                                    Clark</a>,<a href="#" target="_self">Aug
-                                    4, 2015</a></div>
-                            <!-- feature_article_date -->
-
-                            <div class="feature_article_content">
-                                In a move to address mounting concerns about security on Android...
-                            </div>
-                            <!-- feature_article_content -->
-
-                            <div class="article_social">
-                                <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
-                                <span><i class="fa fa-comments-o"></i><a href="#">4</a>Comments</span>
-                            </div>
-                            <!-- article_social -->
-
-                        </div>
-                        <!-- feature_article_inner -->
-
-                    </div>
-                    <!-- feature_static_wrapper -->
-
-                </div>
-                <!-- col-md-5 -->
 
             </div>
             <!-- Row -->
@@ -146,7 +109,8 @@
                                 <div class="col-md-6">
                                     <div class="top_article_img">
                                         <a href="single.html" target="_self"><img class="img-responsive"
-                                                src="{{ asset('front/assets/img/cat-mobi-left-1.jpg') }}" alt="feature-top">
+                                                src="{{ asset('front/assets/img/cat-mobi-left-1.jpg') }}"
+                                                alt="feature-top">
                                         </a>
                                     </div>
                                     <!----top_article_img------>
@@ -981,7 +945,8 @@
                                     </h3>
 
                                     <div class="media_social">
-                                        <span><i class="fa fa-comments-o"></i><a href="#">{{ $post->comments_count }}</a>
+                                        <span><i class="fa fa-comments-o"></i><a
+                                                href="#">{{ $post->comments_count }}</a>
                                             Comments</span>
                                     </div>
                                 </div>
