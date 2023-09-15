@@ -56,7 +56,7 @@ class AppServiceProvider extends ServiceProvider
         $most_commented = Post::withCount('comments')
             ->where('status', 1)
             ->orderBy('comments_count', 'DESC')
-            ->limit(5)
+            ->limit(4)
             ->get();
 
         $shareData = [
