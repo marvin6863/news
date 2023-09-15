@@ -37,7 +37,7 @@
                     <li class="{{ request()->is('back/authors') ? 'active' : '' }}">
                         <a href="{{ route('admin.authors') }}"> <i class="menu-icon fa fa-users"></i>
                             Authors<span
-                                class="badge badge-pill rounded badge-warning">{{ App\User::where('type', 2)->count() }}</span>
+                                class="badge badge-pill rounded badge-warning">{{ $shareData['authors']->count() }}</span>
                         </a>
                     </li>
                 @endpermission
@@ -48,7 +48,7 @@
                     <li class="{{ request()->is('back/categories') ? 'active' : '' }}">
                         <a href="{{ route('admin.categories') }}"> <i class="menu-icon fa fa-list-alt"></i>
                             Categories<span
-                                class="badge badge-pill rounded badge-success">{{ App\Category::all()->count() }}</span>
+                                class="badge badge-pill rounded badge-success">{{ $shareData['categories']->count() }}</span>
                         </a>
                     </li>
                 @endpermission
