@@ -6,7 +6,7 @@
                     <div class="left_section">
                         <!-- Date -->
                         <span class="time">
-                            {{  Carbon\Carbon::now()->toDateTimeString() }}
+                            {{ Carbon\Carbon::now()->format('d.m.Y') }}
                         </span>
                         <!-- Time -->
                         <div class="social">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="logo">
-                        <a href="/"><img src="{{ asset('front/assets/img/logo.png') }}"
+                        <a href="/"><img src="{{ asset('others') }}/{{ $shareData['front_logo'] }}"
                                 alt="Tech NewsLogo"></a>
                     </div>
                     <!-- Logo Section -->
@@ -37,9 +37,9 @@
                             <li><a href="#">Login</a></li>
                             <li><a href="#">Register</a></li>
                             <li class="dropdown lang">
-                                <button class="btn btn-default dropdown-toggle" type="button"
-                                    id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="true">En <i class="fa fa-angle-down"></i></button>
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">En <i
+                                        class="fa fa-angle-down"></i></button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     <li><a href="#">Bn</a></li>
                                 </ul>
@@ -48,8 +48,8 @@
                         <!-- Language Section -->
 
                         <ul class="nav-cta hidden-xs">
-                            <li class="dropdown"><a href="#" data-toggle="dropdown"
-                                    class="dropdown-toggle"><i class="fa fa-search"></i></a>
+                            <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i
+                                        class="fa fa-search"></i></a>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <div class="head-search">
@@ -57,10 +57,8 @@
                                                 <!-- Input Group -->
                                                 <div class="input-group">
                                                     <input type="text" class="form-control"
-                                                        placeholder="Type Something"> <span
-                                                        class="input-group-btn">
-                                                        <button type="submit"
-                                                            class="btn btn-primary">Search
+                                                        placeholder="Type Something"> <span class="input-group-btn">
+                                                        <button type="submit" class="btn btn-primary">Search
                                                         </button>
                                                     </span>
                                                 </div>
@@ -85,8 +83,8 @@
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                             data-target="#navbar-collapse-1"><span class="sr-only">Toggle
-                                navigation</span> <span class="icon-bar"></span> <span
-                                class="icon-bar"></span> <span class="icon-bar"></span>
+                                navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                                class="icon-bar"></span>
                         </button>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->

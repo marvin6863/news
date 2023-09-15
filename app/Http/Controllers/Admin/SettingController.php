@@ -55,6 +55,17 @@ class SettingController extends Controller
             $admin_settings->save();
         }
 
+        $admin_settings = Setting::find(5);
+        if ($request->file('admin_logo2')) {
+            @unlink(public_path('/others/' . $admin_settings->value));
+            $file = $request->file('admin_logo2');
+            $extension = $file->getClientOriginalExtension();
+            $admin_logo2 = 'admin_logo2.' . $extension;
+            $file->move(public_path('/others'), $admin_logo2);
+            $admin_settings->value = $admin_logo2;
+            $admin_settings->save();
+        }
+
         $sys_settings = Setting::find(1);
         $sys_settings->value = $request->name;
         $sys_settings->save();

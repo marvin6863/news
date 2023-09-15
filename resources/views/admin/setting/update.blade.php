@@ -80,6 +80,12 @@
                                           {{ Form::file('admin_logo', ['class' => 'form-control']) }}
                                       </div>
 
+                                      <div class="form-group">
+                                          {{ Form::label('admin_logo2', 'Admin Logo2', ['class' => 'control-label mb-1']) }}
+
+                                          {{ Form::file('admin_logo2', ['class' => 'form-control']) }}
+                                      </div>
+
                                       <div>
                                           <button id="payment-button" type="submit"
                                               class="btn btn-lg rounded btn-warning btn-block">

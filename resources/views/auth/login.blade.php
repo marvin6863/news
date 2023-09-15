@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('others') }}/{{ $shareData['favicon'] }}">
 
     <link rel="stylesheet" href="{{ asset('admin/assets/css/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap.min.css') }}">
@@ -38,7 +38,7 @@
             <div class="login-content">
                 <div class="login-logo">
                     <a href="/">
-                        <h3>{{ __('Tech News') }}</h3>
+                        <img class="align-content" src="{{ asset('others') }}/{{ $shareData['admin_logo'] }}" alt="">
                     </a>
                 </div>
                 <div class="login-form">

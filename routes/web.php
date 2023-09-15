@@ -62,7 +62,7 @@ Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], fun
     Route::put('/comment/status/{id}', 'CommentController@status')->name('comment.status');
 
     Route::get('/settings', 'SettingController@index')->name('setting');
-    Route::put('/settings/update', ['uses'=>'SettingController@update','as'=>'setting-update', 'middleware'=> 'permission:Post List|All'] );
+    Route::put('/settings/update', 'SettingController@update');
 
 
 

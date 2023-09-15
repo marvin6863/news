@@ -6,8 +6,8 @@
                 aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="/"><img src="{{ asset('admin/images/logo.png') }}" alt="Logo"></a>
-            <a class="navbar-brand hidden" href="/"><img src="{{ asset('admin/images/logo2.png') }}"
+            <a class="navbar-brand" href="/"><img src="{{ asset('others') }}/{{ $shareData['admin_logo']}}" alt="Logo"></a>
+            <a class="navbar-brand hidden" href="/"><img src="{{ asset('others') }}/{{ $shareData['admin_logo2']}}"
                     alt="Logo"></a>
         </div>
 
