@@ -61,6 +61,27 @@
                     </li>
                 @endpermission
 
+                @permission(['System Settings', 'All'])
+                    <li class="{{ request()->is('back/posts') ? 'active' : '' }}">
+                        <a href="{{ route('setting') }}"> <i class="menu-icon fa fa-gear"></i>
+                            Settings
+                        </a>
+                    </li>
+                @endpermission
+
+                <li>
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <i class="menu-icon fa fa-sign-out"></i>
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
