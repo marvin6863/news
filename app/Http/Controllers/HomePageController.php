@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -15,13 +16,20 @@ class HomePageController extends Controller
             ->where('status', 1)
             ->orderBy('id', 'DESC')
             ->first();
-        
+
         $top_views = Post::with('creator')
         ->withCount('comments')
         ->where('status', 1)
         ->orderBy('view_count', 'DESC')
         ->limit(2)
         ->get();
-        return view('front.home', compact('hot_news', 'top_views'));
+
+        $category_posts = Category::with('posts')
+        ->where('status', 1)
+        ->orderBy('id', 'DESC')
+        ->limit(5)
+        ->get();
+
+        return view('front.home', compact('hot_news', 'top_views', 'category_posts'));
     }
 }
