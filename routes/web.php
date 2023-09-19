@@ -14,6 +14,8 @@
 Route::get('/', 'HomePageController@index');
 Route::get('/category/{id}', 'CategoryPageController@show');
 Route::get('/details/{slug}', 'DetailsPageController@index')->name('details');
+Route::post('/comments', 'DetailsPageController@comment');
+
 
 Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
