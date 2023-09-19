@@ -38,8 +38,19 @@
                 <div class="col-md-4">
                     <div class="right_section">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            @if (Route::has('login'))
+                                @auth
+
+                                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                @else
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+
+                                    @if (Route::has('register'))
+                                        <li><a href="{{ route('register') }}">Register</a></li>
+                                    @endif
+                                @endauth
+                            @endif
+
                             <li class="dropdown lang">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">En <i
@@ -48,6 +59,7 @@
                                     <li><a href="#">Bn</a></li>
                                 </ul>
                             </li>
+
                         </ul>
                         <!-- Language Section -->
 

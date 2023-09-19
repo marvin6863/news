@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomePageController@index');
 Route::get('/category/{id}', 'CategoryPageController@show');
-Route::get('/details', 'DetailsPageController@index');
+Route::get('/details/{slug}', 'DetailsPageController@index')->name('details');
 
 Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
