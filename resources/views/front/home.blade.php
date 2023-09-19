@@ -106,7 +106,7 @@
                             @foreach ($category->posts as $key => $post)
                                 @if ($key === 0)
                                     <div class="article_title header_purple">
-                                        <h2><a href="category.html" target="_self">{{ $category->name }}</a></h2>
+                                        <h2><a href="{{ url('/category') }}/{{ $category->id }}">{{ $category->name }}</a></h2>
                                     </div>
                                     <div class="category_article_wrapper">
                                         <div class="row">

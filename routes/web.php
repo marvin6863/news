@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomePageController@index');
-Route::get('/listing', 'ListingPageController@index');
+Route::get('/category/{id}', 'CategoryPageController@show');
 Route::get('/details', 'DetailsPageController@index');
 
 Route::group(['prefix'=>'back', 'middleware'=>'auth', 'namespace'=>'Admin'], function () {
