@@ -15,7 +15,8 @@
                         <div class="feature_article_inner">
                             <div class="tag_lg red"><a href="category.html">Hot News</a></div>
                             <div class="feature_article_title">
-                                <h1><a href="single.html" target="_self">{{ $hot_news->title }} </a></h1>
+                                <h1><a href="{{ route('details', $hot_news->slug) }}" target="_self">{{ $hot_news->title }}
+                                    </a></h1>
                             </div>
                             <!-- feature_article_title -->
 
@@ -56,7 +57,8 @@
                             <div class="feature_article_inner">
                                 <div class="tag_lg purple"><a href="category.html">Top Viewed</a></div>
                                 <div class="feature_article_title">
-                                    <h1><a href="single.html" target="_self">{{ str_limit($post->title, 30) }}</a></h1>
+                                    <h1><a href="{{ route('details', $post->slug) }}"
+                                            target="_self">{{ str_limit($post->title, 30) }}</a></h1>
                                 </div>
                                 <!-- feature_article_title -->
 
@@ -106,7 +108,9 @@
                             @foreach ($category->posts as $key => $post)
                                 @if ($key === 0)
                                     <div class="article_title header_purple">
-                                        <h2><a href="{{ url('/category') }}/{{ $category->id }}">{{ $category->name }}</a></h2>
+                                        <h2><a
+                                                href="{{ url('/category') }}/{{ $category->id }}">{{ $category->name }}</a>
+                                        </h2>
                                     </div>
                                     <div class="category_article_wrapper">
                                         <div class="row">
@@ -124,7 +128,8 @@
                                                 <span class="tag purple">{{ $category->name }}</span>
 
                                                 <div class="category_article_title">
-                                                    <h2><a href="single.html" target="_self">{{ $post->title }}. </a></h2>
+                                                    <h2><a href="{{ route('details', $post->slug) }}"
+                                                            target="_self">{{ $post->title }}. </a></h2>
                                                 </div>
                                                 <!----category_article_title------>
                                                 <div class="category_article_date"><a
@@ -137,7 +142,7 @@
                                                 <div class="media_social">
                                                     <span><i class="fa fa-comments-o"></i><a
                                                             href="#">{{ count($post->comments) }}</a>
-                                                        {{ str_plural('Comment', $post->comments_count) }}</span>
+                                                        {{ str_plural('Comment', count($post->comments)) }}</span>
                                                 </div>
                                                 <!----media_social------>
                                             </div>
@@ -158,7 +163,7 @@
                                             <div class="media-body">
                                                 <span class="tag purple">{{ $category->name }}</span>
 
-                                                <h3 class="media-heading"><a href="single.html"
+                                                <h3 class="media-heading"><a href="{{ route('details', $post->slug) }}"
                                                         target="_self">{{ $post->title }}</a></h3>
                                                 <span class="media-date"><a
                                                         href="#">{{ date('j F -Y', strtotime($post->created_at)) }}</a>,
@@ -210,8 +215,9 @@
 
                             <div class="widget_article_social">
                                 <span>
-                                    <a href="single.html" target="_self"><i
-                                            class="fa fa-comments-o"></i>{{ count($post->comments) }}</a> Comments
+                                    <a href="{{ route('details', $post->slug) }}" target="_self"><i
+                                            class="fa fa-comments-o"></i>{{ count($post->comments) }}</a>
+                                    {{ str_plural('Comment', count($post->comments)) }}
                                 </span>
                             </div>
                         </div>
@@ -261,7 +267,7 @@
 
                             <div class="media_social">
                                 <span><i class="fa fa-comments-o"></i><a href="#">{{ $post->comments_count }}</a>
-                                    Comments</span>
+                                    {{ str_plural('Comment', count($post->comments)) }}</span>
                             </div>
                         </div>
                     </div>
